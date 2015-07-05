@@ -3,22 +3,21 @@ from django.http import HttpRequest
 from django.template.loader import render_to_string
 from django.test import TestCase
 from django.utils.html import escape
+from lists.forms import ItemForm
 from lists.views import home_page
 from lists.models import Item, List
 
 
 class HomePageTest(TestCase):
-    def test_root_url_resolve_to_home_page_view(self):
-        '''resolve 함수를 사용해서 내가 원한 view를 호출하는지?(URL mapping)'''
-        found = resolve('/')
-        self.assertEqual(found.func, home_page)
+    maxDiff = None
 
-    def test_home_page_returns_correct_html(self):
-        '''home_page에 접속했을 때 받은 응답과 내가 예상한 html이 같은지?'''
-        request = HttpRequest()
-        response = home_page(request)
-        expected_html = render_to_string('home.html')
-        self.assertEqual(response.content.decode(), expected_html)
+    def test_home_page_renders_home_template(self):
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'home.html')
+
+    def test_home_page_uses_item_form(self):
+        response = self.client.get('/')
+        self.assertIsInstance(response.context['form'], ItemForm)
 
 
 class ListViewTest(TestCase):
