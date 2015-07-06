@@ -1,16 +1,10 @@
-from unittest import skip
-from django.core.urlresolvers import resolve
-from django.http import HttpRequest
-from django.template.loader import render_to_string
 from django.test import TestCase
 from django.utils.html import escape
 from lists.forms import ItemForm, EMPTY_LIST_ERROR, DUPLICATE_ITEM_ERROR, ExistingListItemForm
-from lists.views import home_page
 from lists.models import Item, List
 
 
 class HomePageTest(TestCase):
-    maxDiff = None
 
     def test_home_page_renders_home_template(self):
         response = self.client.get('/')
@@ -157,7 +151,6 @@ class NewListTest(TestCase):
 
     def test_validation_errors_are_shown_on_home_page(self):
         response = self.client.post('/lists/new', data={'text': ''})
-        self.assertEqual(response.status_code, 200)
         self.assertContains(response, escape(EMPTY_LIST_ERROR))
 
     def test_for_invalid_input_passes_form_to_template(self):

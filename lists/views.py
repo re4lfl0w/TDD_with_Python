@@ -1,7 +1,6 @@
-from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from lists.forms import ItemForm, ExistingListItemForm
-from lists.models import Item, List
+from lists.models import List
 
 
 def home_page(request):

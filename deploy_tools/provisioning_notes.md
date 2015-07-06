@@ -30,7 +30,7 @@ Ubuntu에서 실행 방법 예:
 /home/username
              /sites
                    /SITENAME
-                          -database
-                          -source
-                          -static
-                          -virtualenv
+                            /database
+                            /source
+                            /static
+                            /virtualenv

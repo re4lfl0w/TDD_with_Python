@@ -8,8 +8,6 @@ class ItemModelTest(TestCase):
         item = Item()
         self.assertEqual(item.text, '')
 
-
-class ListModelsTest(TestCase):
     def test_item_is_related_to_list(self):
         list_ = List.objects.create()
         item = Item()
@@ -24,10 +22,6 @@ class ListModelsTest(TestCase):
         with self.assertRaises(ValidationError):
             item.save()
             item.full_clean()
-
-    def test_get_absolute_url(self):
-        list_ = List.objects.create()
-        self.assertEqual(list_.get_absolute_url(), '/lists/%d/' % (list_.id,))
 
     def test_duplicate_items_are_invalid(self):
         list_ = List.objects.create()
@@ -56,3 +50,9 @@ class ListModelsTest(TestCase):
     def test_string_representation(self):
         item = Item(text='어떤 텍스트')
         self.assertEqual(str(item), '어떤 텍스트')
+
+
+class ListModelsTest(TestCase):
+    def test_get_absolute_url(self):
+        list_ = List.objects.create()
+        self.assertEqual(list_.get_absolute_url(), '/lists/%d/' % (list_.id,))
