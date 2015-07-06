@@ -10,3 +10,11 @@ class List(models.Model):
 class Item(models.Model):
     text = models.TextField(default='')
     list = models.ForeignKey(List, default=None)
+
+    class Meta:
+        ordering = ('id',)
+        unique_together = ('list', 'text')
+
+    # 책에는 __str__이 없었는데.. 1장 뒤에 등장하네.
+    def __str__(self):
+        return self.text
