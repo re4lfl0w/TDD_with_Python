@@ -1,3 +1,4 @@
 Django==1.7
 gunicorn==18.0
 wheel==0.24.0
+requests
