@@ -60,4 +60,6 @@ class GetUserTest(TestCase):
 
     def test_returns_none_if_no_user_with_that_email(self):
         backend = PersonaAuthenticationBackend()
-        self.assertIsNone(backend.get_user('a@b.com'))
+        self.assertIsNone(
+            backend.get_user('a@b.com')
+        )

@@ -49,9 +49,7 @@
                 };
                 xhr = sinon.useFakeXMLHttpRequest();
                 requests = [];
-                xhr.onCreate = function (request) {
-                    requests.push(request);
-                };
+                xhr.onCreate = function (request) { requests.push(request); };
             },
             teardown: function () {
                 mockNavigator.id.watch.reset();
@@ -66,19 +64,6 @@
                     true,
                     'watch 함수가 호출되는지 확인'
             );
-        });
-
-        test("initialize가 로그인 버튼에 navigator.id.request를 바인딩 ", function () {
-            var requestWasCalled = false;
-            var mockRequestFunction = function () {
-                requestWasCalled = true;
-            };
-            var mockNavigator = {
-                id: {
-                    request: mockRequestFunction,
-                    watch: function () {}
-                }
-            };
         });
 
         test("watch가 현재 사용자를 확인", function () {
