@@ -19,9 +19,7 @@
         /* global $, test, sinon, Superlists */
         test("initialize binds sign in button to navigator.id.request", function () {
             var requestWasCalled = false;
-            var mockRequestFunction = function () {
-                requestWasCalled = true;
-            };
+            var mockRequestFunction = function () { requestWasCalled = true; };
             var mockNavigator = {
                 id: {
                     request: mockRequestFunction,
@@ -32,8 +30,6 @@
             equal(requestWasCalled, false, '클릭 전에 request가 호출되지 않는지 확인');
             $('#id_login').trigger('click');
             equal(requestWasCalled, true, '클릭 후에 request가 호출되는 것을 확인');
-
-            equal(requestWasCalled, true);
         });
 
         var user, token, urls, mockNavigator, requests, xhr;
@@ -59,11 +55,7 @@
 
         test("initialize가 navigator.id.watch를 호출", function () {
             Superlists.Accounts.initialize(mockNavigator, user, token, urls);
-            equal(
-                    mockNavigator.id.watch.calledOnce,
-                    true,
-                    'watch 함수가 호출되는지 확인'
-            );
+            equal(mockNavigator.id.watch.calledOnce, true,'watch 함수가 호출되는지 확인');
         });
 
         test("watch가 현재 사용자를 확인", function () {

@@ -12,14 +12,15 @@ class LayoutAndStylingTest(FunctionalTest):
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
             512,
-            delta=10
+            delta=5
         )
 
         # 그녀는 새로운 리스트를 시작하고 입력 상자가
         # 가운데 배치된 것을 확인한다
         inputbox.send_keys('testing\n')
         inputbox = self.get_item_input_box()
-        self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2,
-                               512,
-                               delta=10
+        self.assertAlmostEqual(
+            inputbox.location['x'] + inputbox.size['width'] / 2,
+            512,
+            delta=5
         )

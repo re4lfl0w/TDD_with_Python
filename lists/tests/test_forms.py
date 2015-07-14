@@ -1,8 +1,9 @@
-from unittest import TestCase
+from django.test import TestCase
 from lists.forms import (
-    EMPTY_LIST_ERROR, DUPLICATE_ITEM_ERROR, ExistingListItemForm, ItemForm
+    DUPLICATE_ITEM_ERROR, EMPTY_LIST_ERROR,
+    ExistingListItemForm, ItemForm
 )
-from lists.models import List, Item
+from lists.models import Item, List
 
 
 class ItemFormTest(TestCase):
@@ -22,7 +23,7 @@ class ItemFormTest(TestCase):
         new_item = form.save(for_list=list_)
         # test_form_save_handles_saving_to_a_list() 가 동작하는데
         # 그 중간에 test_form_validation_for_duplicate_items()가 실행되서 그런듯..
-        # self.assertEqual(new_item, Item.objects.first())
+        self.assertEqual(new_item, Item.objects.first())
         self.assertEqual(new_item.text, 'do me')
         self.assertEqual(new_item.list, list_)
 

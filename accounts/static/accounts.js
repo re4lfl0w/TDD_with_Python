@@ -1,18 +1,19 @@
+/*global $ */
+
 var initialize = function (navigator, user, token, urls) {
     $('#id_login').on('click', function () {
         navigator.id.request();
     });
 
-//    navigator.id.watch();
     navigator.id.watch({
         loggedInUser: user,
         onlogin: function (assertion) {
-            var deferred = $.post(
+            $.post(
                 urls.login,
                 { assertion: assertion, csrfmiddlewaretoken: token }
-            );
-            deferred.done(function () { window.location.reload(); })
-            deferred.fail(function () { navigator.id.logout(); });
+            )
+            .done(function () { window.location.reload(); })
+            .fail(function () { navigator.id.logout(); });
         },
         onlogout: function () { }
     });

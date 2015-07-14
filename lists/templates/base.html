@@ -3,7 +3,7 @@
     <head>
         <title>To-Do lists</title>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/static/base.css" rel="stylesheet" media="screen">
@@ -32,18 +32,19 @@
                             {{ form.text }}
                             {% if form.errors %}
                                 <div class="form-group has-error">
-                                    <span class="help-block">{{ form.text.errors }}</span>
+                                    <div class="help-block">{{ form.text.errors }}</div>
                                 </div>
                             {% endif %}
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                {% block table %}
-                {% endblock %}
+
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    {% block table %}
+                    {% endblock %}
+                </div>
             </div>
         </div>
     <script src="http://code.jquery.com/jquery.min.js"></script>
