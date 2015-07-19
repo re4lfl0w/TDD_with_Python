@@ -1,4 +1,4 @@
 db.sqlite3
 __pycache__
 *.pyc
-funtional_tests/screendumps
+functional_tests/screendumps
