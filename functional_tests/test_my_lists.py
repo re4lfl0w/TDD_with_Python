@@ -49,12 +49,12 @@ class MyListsTest(FunctionalTest):
 
         # "나의 목록" 아래에 새로운 목록이 표시된다
         self.browser.find_element_by_link_text('나의 목록').click()
-        self.browser.find_element_by_link_text('게임 하기').click()
+        self.browser.find_element_by_link_text('게임하기').click()
         self.assertEqual(self.browser.current_url, second_list_url)
 
         # 로그아웃한다. "나의 목록" 옵션이 사라진다
         self.browser.find_element_by_id('id_logout').click()
         self.assertEqual(
-            self.browser.find_element_by_link_text('나의 목록'),
+            self.browser.find_elements_by_link_text('나의 목록'),
             []
         )
