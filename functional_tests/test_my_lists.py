@@ -58,5 +58,3 @@ class MyListsTest(FunctionalTest):
             self.browser.find_elements_by_link_text('나의 목록'),
             []
         )
-
-        self.fail()
